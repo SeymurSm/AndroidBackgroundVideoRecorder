@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+
+
+    <!--<item android:id="@+id/game"-->
+        <!--android:title="Tetris Game"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="never" />-->
+
+    <item android:id="@+id/menu_bookmark"
+        android:icon="@drawable/info"
+        app:showAsAction="always"
+        android:title="Bookmark"/>
+    <item android:id="@+id/howto"
+        android:title="Commands Description"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_movies"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_save"
+        android:icon="@drawable/settings"
+        app:showAsAction="always"
+        android:title="Save"/>
+
+
+</menu>

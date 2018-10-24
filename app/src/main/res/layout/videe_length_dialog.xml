@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    android:weightSum="2">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="64dp"
+        android:layout_height="32dp"
+        android:text = "minute"
+        android:textSize="20sp"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="64dp"
+        android:layout_height="32dp"
+        android:textSize="20sp"
+        android:text = "second"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <NumberPicker
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:id="@+id/numberPicker"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <NumberPicker
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/numberPickerSecond"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

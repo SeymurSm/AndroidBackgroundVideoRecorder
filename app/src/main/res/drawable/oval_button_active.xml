@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" >
+        <shape android:shape="oval"  >
+            <!--<corners android:radius="4dip" />-->
+            <stroke android:width="0.5dip" android:color="#1B1F20" />
+            <gradient android:angle="-90" android:startColor="#2B2F31" android:endColor="#2B2F31"  />
+        </shape>
+    </item>
+
+
+    <item android:state_focused="true">
+        <shape android:shape="oval"  >
+            <!--<corners android:radius="4dip" />-->
+            <stroke android:width="02dip" android:color="#111F20" />
+            <solid android:color="#991F20"/>
+        </shape>
+    </item>
+
+    <item>
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item >
+        <shape android:shape="oval"  >
+            <!--<corners android:radius="4dip" />-->
+            <stroke android:width="4dip" android:color="#771F20" />
+            <gradient android:angle="-90" android:startColor="#AA393B" android:endColor="#DD2F31" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_switch"
+        android:top="24dp" android:bottom="24dp"
+        android:right="24dp" android:left="24dp">
+    </item>
+    </layer-list>
+    </item>
+</selector>

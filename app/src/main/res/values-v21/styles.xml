@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <style name="AppThemeSettings" parent="Theme.AppCompat.Light.DarkActionBar"><!-- Customize your theme here. -->
+        <item name="colorPrimary">#26a69a</item>
+        <item name="colorPrimaryDark">#009688</item>
+
+    </style>
+
+    <style name="SMSActivity" parent="Theme.AppCompat.Light.NoActionBar"><!-- Customize your theme here. -->
+        <item name="colorPrimary">#ffeb3b</item>
+        <item name="colorPrimaryDark">#ffeb3b</item>
+
+    </style>
+</resources>

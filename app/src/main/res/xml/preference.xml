@@ -1,0 +1,121 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sample="urn:oasis:names:tc:xliff:document:1.2">
+
+    <PreferenceCategory android:title="User ">
+        <EditTextPreference
+        android:title="User Name"
+        android:icon="@android:drawable/ic_menu_add"
+        android:summary="Enter Your Name"
+        android:key="Usarname"/></PreferenceCategory>
+
+    extra
+
+    <PreferenceCategory android:title="Video Settings ">
+
+        <ListPreference
+            android:icon="@android:drawable/ic_menu_camera"
+            android:key="videoRecord"
+            android:entries="@array/syncFrequency"
+            android:summary="Resolution of Recorded video"
+            android:entryValues="@array/syncFrequencyValues"
+            android:title="Video Quality"/>
+        <Preference
+            android:title="Video Duration"
+            android:id="@+id/videoDuration"
+            android:summary=""
+            android:icon="@android:drawable/ic_menu_recent_history"
+            android:key="videoDuration"/>
+
+    </PreferenceCategory>
+
+
+
+
+    <PreferenceCategory
+        android:title="Crash Detection">
+
+        <SwitchPreference
+            android:key="shakeService"
+            android:title="Safe Mode"
+            android:defaultValue="false"
+            android:icon="@android:drawable/ic_menu_crop"/>
+
+        <SwitchPreference
+            android:key="location" android:title="Sending Location in case of crash"
+            android:defaultValue="false"
+            android:icon="@android:drawable/ic_menu_mylocation"/>
+
+        <Preference
+            android:title="Emergency Person"
+            android:id="@+id/EmergencyPerson"
+            android:summary="pick a contact"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:key="EmergencyPerson"/>
+        <Preference
+            android:title="Crash Detection Parameters"
+            android:id="@+id/shakeIntensity"
+            android:summary=""
+            android:icon="@android:drawable/ic_dialog_map"
+            android:key="ShakeIntensity"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory  android:title="Call">
+        <SwitchPreference
+            android:key="incommingcall"
+            android:title="Reading Incomming Calls"
+            android:defaultValue="false"
+            android:icon="@android:drawable/ic_menu_call"/>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="Notification Settings ">
+        <SwitchPreference
+            android:key="fromfacebook"
+            android:title="Facebook notifications"
+            android:defaultValue="false"
+            android:icon="@android:drawable/ic_menu_view"/>
+        <SwitchPreference
+            android:key="fromgsmessage"
+            android:title="Messages Notifications"
+            android:defaultValue="false"
+            android:icon="@android:drawable/ic_menu_view"/>
+        <SwitchPreference
+            android:key="fromother"
+            android:title="Other Notifications"
+            android:defaultValue="false"
+            android:summary="Deactivated"
+            android:icon="@android:drawable/ic_menu_view"/>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="General">
+        <ListPreference android:defaultValue="-1"
+            android:entries="@array/languageTypes"
+            android:entryValues="@array/languageTypesVal"
+            android:key="language"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Dil secimi"
+            android:summary="language"
+            android:icon="@android:drawable/ic_menu_preferences"/>
+        <Preference
+            android:title="More Free Apps"
+            android:id="@+id/more_apps"
+            android:summary=""
+            android:icon="@android:drawable/ic_menu_more"
+            android:key="more_apps"/>
+        <Preference
+            android:title="Share"
+            android:id="@+id/Share"
+            android:summary=""
+            android:icon="@android:drawable/ic_menu_share"
+            android:key="Share"/>
+        <Preference
+            android:title="About"
+            android:id="@+id/About"
+            android:summary=""
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:key="About"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>
