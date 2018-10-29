@@ -3,14 +3,19 @@ package com.app.tetris.hidrecorder;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
+import android.media.ThumbnailUtils;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.text.format.DateFormat;
 import android.view.Gravity;
@@ -19,6 +24,9 @@ import android.view.SurfaceView;
 import android.view.WindowManager;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -30,11 +38,12 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
     private WindowManager windowManager;
     private SurfaceView surfaceView;
     private Camera camera = null;
-    private MediaRecorder mediaRecorder = null;
+    static MediaRecorder mediaRecorder = null;
     int videoQuality = 0;
     int videoDuration = 10;
     TinyDB tinyDB;
     private TextToSpeech tts;
+    String outputFileName, outputFileFolder;
     @Override
     public void onCreate() {
 //        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -125,16 +134,20 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
             mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_LOW));
 
         File folder = new File(Environment.getExternalStorageDirectory() + "/hidrecorder");
+        File folderImages = new File(Environment.getExternalStorageDirectory() + "/hidrecorder/images");
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdir();
         }
+        if (!folderImages.exists()) {
+            success = folderImages.mkdir();
+        }
 
-        mediaRecorder.setOutputFile(
-                Environment.getExternalStorageDirectory() + "/hidrecorder/" +
-                        DateFormat.format("yyyy-MM-dd_kk-mm-ss", new Date().getTime()) +
-                        ".mp4"
-        );
+        outputFileFolder = Environment.getExternalStorageDirectory() + "/hidrecorder";
+        outputFileName = (String) DateFormat.format("yyyy-MM-dd_kk:mm:ss", new Date().getTime());
+        mediaRecorder.setOutputFile(outputFileFolder+"/"+outputFileName+".mp4");
+
+
 
         try { mediaRecorder.prepare(); } catch (Exception e) {}
         mediaRecorder.start();
@@ -148,11 +161,40 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
         mediaRecorder.stop();
         mediaRecorder.reset();
         mediaRecorder.release();
-        camera.lock();
+      //  camera.lock();
         camera.release();
         windowManager.removeView(surfaceView);
 
+        Bitmap thumb = ThumbnailUtils.createVideoThumbnail(outputFileFolder+"/"+outputFileName+".mp4", MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
+        Matrix matrix = new Matrix();
+        Bitmap bitmap = Bitmap.createBitmap(thumb, 0, 0,
+                thumb.getWidth(), thumb.getHeight(), matrix, true);
+        tinyDB = new TinyDB(getApplicationContext());
+        //tinyDB.putImage(outputFileFolder+"/images",outputFileName+".png", bitmap );
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(outputFileFolder+"/images/"+outputFileName+".png");
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            Bitmap.createScaledBitmap(bitmap, 128, 72, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
+
+    private void exitPlayer() {
+        VideoRecordService.mediaRecorder.stop();
+        stopSelf();
+    }
+
+
 
 
     public void speak(String s)
@@ -169,5 +211,30 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
 
     @Override
     public IBinder onBind(Intent intent) { return null; }
+
+
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath=new File(directory,"profile.jpg");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
 
 }

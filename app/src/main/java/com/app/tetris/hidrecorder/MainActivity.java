@@ -101,7 +101,7 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
 
 
 
-//   BroadcastReceiver mySmsReceiver = new IncommingSms();
+
 //        registerReceiver(mySmsReceiver,new IntentFilter("MyBroadcats"));
 
 

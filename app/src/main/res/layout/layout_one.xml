@@ -4,9 +4,7 @@
     android:layout_height="fill_parent"
     android:gravity="center|center"
     android:orientation="vertical"
-    android:background="#60FFFFFF"
-
-    >
+    android:background="#60FFFFFF">
 
 
 

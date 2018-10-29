@@ -1,50 +1,84 @@
 <FrameLayout
     android:layout_width="fill_parent"
-    android:layout_height="96dp"
+    android:layout_height="112dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/backlayer"
-    android:layout_gravity="center_vertical"
-    android:scaleType="fitXY"
-    android:gravity="top|left"/>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitXY"
-        android:weightSum="14">
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:id="@+id/catbir"
-                android:layout_marginTop="20dp"
-                android:layout_weight="2"
-                android:layout_marginLeft="0dp"
-                />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:padding="4dp"
+        android:elevation="4dp"
+        android:background="@drawable/basic_video_back">
 
-            <TextView android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:textSize="32sp"
-                android:layout_marginTop="24dp"
-                android:textColor="#4B0082"
-                android:id="@+id/catiki"
-                android:layout_weight="5"
-              />
-            <TextView android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="24sp"
-                android:layout_weight="7"
-                android:textStyle="italic"
-                android:layout_marginTop="24dp"
-                android:text="Body of category"
-                android:textColor="#AA4B0082"
-                android:id="@+id/catikibir"
-                />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/ivVideoImage"
+            android:layout_weight="1"
+            android:layout_marginLeft="0dp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:weightSum="11"
+            android:layout_marginLeft="8dp">
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="@drawable/basic_lay_top"
+                android:padding="4dp">
+                <ImageButton
+                    android:id="@+id/btnPlay"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:padding="4dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_play"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="#12FFFFFF"
+                android:padding="4dp">
+                <ImageButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:padding="4dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="56dp"
+                    android:background="@drawable/ic_share"/>
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:padding="4dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="56dp"
+                    android:background="@drawable/ic_delete"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:background="@drawable/basic_lay_bottom"
+                android:padding="4dp">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:text="Body of category"
+                    android:textColor="@color/whitesmoke"
+                    android:id="@+id/tvDate" />
+            </FrameLayout>
 
-</LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
 </FrameLayout>
