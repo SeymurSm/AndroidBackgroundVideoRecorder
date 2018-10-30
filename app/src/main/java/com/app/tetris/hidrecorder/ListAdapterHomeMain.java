@@ -50,10 +50,24 @@ public class ListAdapterHomeMain extends ArrayAdapter<VideoFile> {
         TextView videoDate = (TextView) rowView.findViewById(R.id.tvDate);
         ImageView videoImage = (ImageView) rowView.findViewById(R.id.ivVideoImage);
         ImageButton playButton = (ImageButton) rowView.findViewById(R.id.btnPlay);
+        ImageButton shareButton = (ImageButton) rowView.findViewById(R.id.btnShare);
+        ImageButton deleteButton = (ImageButton) rowView.findViewById(R.id.btnDelete);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ic.onPlayEvent(position);
+            }
+        });
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ic.onShareEvent(position);
+            }
+        });
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ic.onDeleteEvent(position);
             }
         });
 
@@ -75,6 +89,8 @@ public class ListAdapterHomeMain extends ArrayAdapter<VideoFile> {
     public interface ICallback {
 
         void onPlayEvent(int position);
+        void onShareEvent(int position);
+        void onDeleteEvent(int position);
     }
 
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {

@@ -74,7 +74,7 @@
             >
             <!-- android:theme="@android:style/Theme.Dialog"> -->
         </activity>
-        <activity android:name=".HowToActivity" />
+        <activity android:name=".VideosActivity" />
 
         <!-- adding new service -->
         <!-- Registering the notification service -->

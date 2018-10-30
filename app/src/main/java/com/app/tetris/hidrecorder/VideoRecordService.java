@@ -187,6 +187,8 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
             }
         }
 
+        tinyDB.putString(outputFileFolder+"/"+outputFileName+".mp4",outputFileFolder+"/images/"+outputFileName+".png");
+
     }
 
     private void exitPlayer() {

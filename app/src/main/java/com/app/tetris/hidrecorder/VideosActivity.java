@@ -1,0 +1,248 @@
+package com.app.tetris.hidrecorder;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.media.MediaScannerConnection;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
+/**
+ * Created by bledi on 12/19/15.
+ */
+
+@SuppressLint("NewApi") public final  class VideosActivity extends ActionBarActivity {
+
+    ListView listView;
+    ListAdapterHomeMain adapter;
+    TinyDB tinyDB;
+
+    @SuppressLint({"NewApi", "InvalidWakeLockTag"})
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_how_to);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final ArrayList<String> filePaths = new ArrayList<String>();
+        final ArrayList<String> filePathsImages = new ArrayList<String>();
+        tinyDB = new TinyDB(getApplicationContext());
+
+        File folder = new File(Environment.getExternalStorageDirectory() + "/hidrecorder");
+        File folderImages = new File(Environment.getExternalStorageDirectory() + "/hidrecorder/images");
+        if(folder.exists()) {
+
+            if (folder.listFiles().length > 0) {
+                for (File f : folder.listFiles()) {
+                    if (f.isFile()) {
+                        String name = f.getName().toString();
+                        filePaths.add(Environment.getExternalStorageDirectory() + "/hidrecorder/" + name);
+                    }
+                    // Do your stuff
+                }
+                if (folderImages.listFiles().length > 0) {
+                    for (File f : folderImages.listFiles()) {
+                        if (f.isFile()) {
+                            String nameImage = f.getName().toString();
+                            filePathsImages.add(Environment.getExternalStorageDirectory() + "/hidrecorder/images/" + nameImage);
+                        }
+                        // Do your stuff
+                    }
+                }
+
+                TextView ikinci = (TextView) findViewById(R.id.textViewLay1);
+                Typeface fontiki = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
+                ikinci.setTypeface(fontiki);
+                ikinci.setText("Records \n\n");
+
+
+                final ArrayList<VideoFile> videoFiles = new ArrayList<VideoFile>();
+
+                for (int i = 0;i<filePaths.size(); i++) {
+                    VideoFile vf = new VideoFile();
+                    vf.setFileDate(filePaths.get(i).substring(filePaths.get(i).lastIndexOf("/")+1, filePaths.get(i).indexOf(".")));
+
+                    String imageP = tinyDB.getString(filePaths.get(i));
+                    if(!imageP.isEmpty() && imageP.length()>0){
+                        File f = new File(imageP);
+                        if(f.exists())
+                            vf.setFileImage(loadImageFromStorage(imageP));
+                        else {
+                            Bitmap thumb = ThumbnailUtils.createVideoThumbnail(filePaths.get(i), MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
+                            Matrix matrix = new Matrix();
+                            Bitmap bitmap = Bitmap.createBitmap(thumb, 0, 0,
+                                    thumb.getWidth(), thumb.getHeight(), matrix, true);
+                            //tinyDB.putImage(outputFileFolder+"/images",outputFileName+".png", bitmap );
+
+                            FileOutputStream fos = null;
+                            try {
+                                fos = new FileOutputStream(imageP);
+                                // Use the compress method on the BitMap object to write image to the OutputStream
+                                Bitmap.createScaledBitmap(bitmap, 128, 72, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            } finally {
+                                try {
+                                    fos.close();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            vf.setFileImage(loadImageFromStorage(imageP));
+                        }
+                    }
+                    else
+                        vf.setFileImage( BitmapFactory.decodeResource(getResources(), R.drawable.ic_movie));
+                    videoFiles.add(vf);
+                }
+
+                listView = (ListView) findViewById(R.id.commandsList);
+
+                adapter = new ListAdapterHomeMain(getApplicationContext(), videoFiles, new ListAdapterHomeMain.ICallback() {
+                    @Override
+                    public void onPlayEvent(int position) {
+                        Toast.makeText(VideosActivity.this, position+"", Toast.LENGTH_SHORT).show();
+                        File file = new File(filePaths.get(position));
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setDataAndType(Uri.fromFile(file), "video/*");
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onShareEvent(int position) {
+                        shareVideo("Recorded with HiddenRecorder",filePaths.get(position));
+                    }
+
+                    @Override
+                    public void onDeleteEvent(int position) {
+                        File file = new File(filePaths.get(position));
+                        boolean result = file.delete();
+                        if(result) {
+                            Toast.makeText(VideosActivity.this, "Video successfully deleted!", Toast.LENGTH_SHORT).show();
+                            videoFiles.remove(position);
+                            adapter.refreshEvents(videoFiles);
+                        }
+                        else {
+                            Toast.makeText(VideosActivity.this, "Error occurred on delete!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                });
+                listView.setAdapter(adapter);
+            }
+        }
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                finish();
+        }
+        return (super.onOptionsItemSelected(menuItem));
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+
+
+
+
+    @Override
+    protected void onDestroy()
+    {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+
+        Log.v("MyApp", "onDestroy");
+    }
+
+    public String BitMapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String temp = Base64.encodeToString(b, Base64.DEFAULT);
+        return temp;
+    }
+
+    private Bitmap loadImageFromStorage(String path)
+    {
+        Bitmap b = null;
+        try {
+            File f=new File(path);
+             b = BitmapFactory.decodeStream(new FileInputStream(f));
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        return b;
+
+    }
+
+
+    public void shareVideo(final String title, String path) {
+
+        MediaScannerConnection.scanFile(VideosActivity.this, new String[] { path },
+
+                null, new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+                        Intent shareIntent = new Intent(
+                                android.content.Intent.ACTION_SEND);
+                        shareIntent.setType("video/*");
+                        shareIntent.putExtra(
+                                android.content.Intent.EXTRA_SUBJECT, title);
+                        shareIntent.putExtra(
+                                android.content.Intent.EXTRA_TITLE, title);
+                        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                        shareIntent
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                        getApplicationContext().startActivity(Intent.createChooser(shareIntent,
+                                title));
+
+                    }
+                });
+    }
+
+
+    public void deleteVideo(String path){
+        File dir = getFilesDir();
+        File file = new File(dir, "my_filename");
+        boolean deleted = file.delete();
+    }
+
+    //                    Bitmap thumb = ThumbnailUtils.createVideoThumbnail(e, MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
+//                    Matrix matrix = new Matrix();
+//                    Bitmap bitmap = Bitmap.createBitmap(thumb, 0, 0,
+//                            thumb.getWidth(), thumb.getHeight(), matrix, true);
+    // thumb.getWidth(), thumb.getHeight(), matrix, true);
+
+}

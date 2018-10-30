@@ -111,7 +111,7 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
         //callDetect = new Intent(this, CallDetectService.class);
 
         /***************************************************/
-        SpannableString s = new SpannableString("HIDEN");
+        SpannableString s = new SpannableString(getResources().getString(R.string.app_name));
         s.setSpan(new TypefaceSpan(this, "capture.ttf"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         getSupportActionBar().setTitle(s);
 
@@ -410,35 +410,32 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.menu_bookmark: {
-                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+//            case R.id.menu_bookmark: {
+//                LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+//
+//                View layout = inflater.inflate(R.layout.info_dialog, null);
+//                final AlertDialog alertContact = new AlertDialog.Builder(MainActivity.this)
+//                        .setView(layout)
+//                        .setIcon(R.drawable.tet)
+//                        .show();
+//                alertContact.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.parseColor("#001b5e20")));
+//                TextView infoText = (TextView)layout.findViewById(R.id.textViewInfo);
+//                Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
+//                infoText.setTypeface(font);
+//                return true;
+//            }
 
-                View layout = inflater.inflate(R.layout.info_dialog, null);
-                final AlertDialog alertContact = new AlertDialog.Builder(MainActivity.this)
-                        .setView(layout)
-                        .setIcon(R.drawable.tet)
-                        .show();
-                alertContact.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.parseColor("#001b5e20")));
-                TextView infoText = (TextView)layout.findViewById(R.id.textViewInfo);
-                Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
-                infoText.setTypeface(font);
+
+            case R.id.howto:
+                Intent intent = new Intent(this, VideosActivity.class);
+               // finish();
+                startActivity(intent);
                 return true;
-            }
             case R.id.menu_save:
                 Intent i = new Intent(this, Settings.class);
                 finish();
                 startActivity(i);
-
                 return true;
-
-            case R.id.howto:
-                Intent intent = new Intent(this, HowToActivity.class);
-                finish();
-                startActivity(intent);
-                return true;
-
-
-
             default:
                 return super.onOptionsItemSelected(item);
         }

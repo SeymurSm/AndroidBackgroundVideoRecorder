@@ -9,20 +9,20 @@
         <!--android:orderInCategory="100"-->
         <!--app:showAsAction="never" />-->
 
-    <item android:id="@+id/menu_bookmark"
-        android:icon="@drawable/info"
-        app:showAsAction="always"
-        android:title="Bookmark"/>
+    <!--<item android:id="@+id/menu_bookmark"-->
+        <!--android:icon="@drawable/info"-->
+        <!--app:showAsAction="always"-->
+        <!--android:title="Bookmark"/>-->
     <item android:id="@+id/howto"
-        android:title="Commands Description"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_movies"
+        android:title="Videos"
+        android:icon="@drawable/ic_videoss"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_save"
         android:icon="@drawable/settings"
         app:showAsAction="always"
-        android:title="Save"/>
+        android:title="Settings"/>
+
 
 
 </menu>
