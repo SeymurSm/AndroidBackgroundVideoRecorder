@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/delete_dialog_back"
+        android:orientation="vertical">
+        <!--<ImageView-->
+            <!--android:layout_width="196dp"-->
+            <!--android:layout_height="96dp"-->
+            <!--android:background="@drawable/tetris"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:layout_marginLeft="40dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_marginBottom="0dp"/>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="40dp"
+            android:padding="8dp"
+            android:textSize="24sp"
+            android:textColor="#ffffff"
+            android:text="Are you sure you want to delete this file?"
+            android:id="@+id/textViewInfo" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnNo"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="No"
+                android:textAllCaps="false"
+                android:background="@drawable/red_button"
+                android:textColor="@color/white"
+                android:layout_margin="4dp"/>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnYes"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Yes"
+                android:textAllCaps="false"
+                android:background="@drawable/blue_button"
+                android:textColor="@color/white"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
