@@ -105,7 +105,7 @@ import java.util.ArrayList;
                             try {
                                 fos = new FileOutputStream(imageP);
                                 // Use the compress method on the BitMap object to write image to the OutputStream
-                                Bitmap.createScaledBitmap(bitmap, 72, 128, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
+                                Bitmap.createScaledBitmap(bitmap, 128, 72, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             } finally {
@@ -153,8 +153,10 @@ import java.util.ArrayList;
                         AppCompatButton buttonNo = (AppCompatButton)layout.findViewById(R.id.btnNo);
                         alertContact.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.parseColor("#00000000")));
                         TextView infoText = (TextView)layout.findViewById(R.id.textViewInfo);
-                        Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
-                        infoText.setTypeface(font);
+                        //Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
+                        //infoText.setTypeface(font);
+                        Typeface fontuc = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/uicksandregular.otf");
+                        infoText.setTypeface(fontuc);
                         buttonYes.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

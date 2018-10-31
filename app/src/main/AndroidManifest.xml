@@ -69,7 +69,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Settings"
+            android:name=".SettingsActivity"
             android:theme="@style/AppThemeSettings">
             >
             <!-- android:theme="@android:style/Theme.Dialog"> -->

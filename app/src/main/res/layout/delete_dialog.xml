@@ -23,7 +23,10 @@
             android:layout_marginBottom="40dp"
             android:padding="8dp"
             android:textSize="24sp"
-            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorPrimaryDark"
             android:text="Are you sure you want to delete this file?"
             android:id="@+id/textViewInfo" />
         <LinearLayout
@@ -34,7 +37,7 @@
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnNo"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="No"
                 android:textAllCaps="false"
@@ -44,7 +47,7 @@
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnYes"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Yes"
                 android:textAllCaps="false"

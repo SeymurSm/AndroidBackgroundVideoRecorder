@@ -2,7 +2,6 @@ package com.app.tetris.hidrecorder;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,7 +10,6 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -23,7 +21,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -432,8 +429,8 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
                 startActivity(intent);
                 return true;
             case R.id.menu_save:
-                Intent i = new Intent(this, Settings.class);
-                finish();
+                Intent i = new Intent(this, SettingsActivity.class);
+              //  finish();
                 startActivity(i);
                 return true;
             default:

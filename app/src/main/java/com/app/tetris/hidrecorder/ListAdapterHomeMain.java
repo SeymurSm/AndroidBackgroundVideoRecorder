@@ -12,6 +12,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,8 @@ public class ListAdapterHomeMain extends ArrayAdapter<VideoFile> {
         });
 
         // 4. Set the text for textView
+        Typeface fontuc = Typeface.createFromAsset(context.getAssets(), "fonts/uicksandregular.otf");
+        videoDate.setTypeface(fontuc);
         videoDate.setText(itemsArrayList.get(position).getFileDate());
         videoImage.setImageBitmap(getRoundedCornerBitmap(itemsArrayList.get(position).getFileImage(),8));
         //Glide.with(context).load(itemsArrayList.get(position).get_event_image_url()).into(eventImage);

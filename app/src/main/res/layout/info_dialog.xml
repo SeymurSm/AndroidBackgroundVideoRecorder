@@ -6,29 +6,40 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/command_info_dialog"
+        android:background="@drawable/delete_dialog_back"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="196dp"
-            android:layout_height="96dp"
-            android:background="@drawable/tetris"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="0dp"/>
+        <!--<ImageView-->
+            <!--android:layout_width="196dp"-->
+            <!--android:layout_height="96dp"-->
+            <!--android:background="@drawable/tetris"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:layout_marginLeft="40dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_marginBottom="0dp"/>-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ffffff"
-            android:text="Tetris Team\nCopyright (c) 2015-2016\nSmart Driver Assistant Project.\nAll rights reserved."
-            android:id="@+id/textViewInfo"
-            android:layout_weight="0.06"
-            />
-    </LinearLayout>
+            android:padding="8dp"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Thanks for using our product. We would like to get your feedback and suggestions."
+            android:id="@+id/textViewInfo" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Close"
+            android:textAllCaps="false"
+            android:background="@drawable/red_button"
+            android:textColor="@color/white"
+            android:layout_margin="4dp"/>
 
+    </LinearLayout>
 
 </LinearLayout>

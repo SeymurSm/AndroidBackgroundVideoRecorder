@@ -1,37 +1,33 @@
 package com.app.tetris.hidrecorder;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.SwitchPreference;
-import android.provider.ContactsContract;
-import android.speech.tts.TextToSpeech;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
-import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.tetris.hidrecorder.services.ShakeDetectAndMessageSend;
+import java.io.File;
 
 /**
  * Created by Seymur on 15.11.2015.
  */
 
-public class Settings extends PreferenceActivity  {
+public class SettingsActivity extends PreferenceActivity  {
 
     Button share,moreapps,about,Adduser;
 
@@ -50,22 +46,53 @@ public class Settings extends PreferenceActivity  {
 
         addPreferencesFromResource(R.xml.preference);
 
+
+        LinearLayout root = (LinearLayout)findViewById(android.R.id.list).getParent().getParent().getParent();
+        Toolbar bar = (Toolbar)LayoutInflater.from(this).inflate(R.layout.preference_toolbar, root, false);
+        root.addView(bar, 0); // insert at top
+        bar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         Preference About = findPreference("About");
         About.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
 
-                final AlertDialog alertDialog = new AlertDialog.Builder(Settings.this)
-                        .setTitle("About")
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .setMessage(Html.fromHtml(String.format("<font color='#bbdefb'>Thanks to use our product. We would like to get your feedback and suggestions.\n   e-mail:<font color='#088A68'>  info@tetris.com </font>", "#000000")))
-                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+//                final AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this)
+//                        .setTitle("About")
+//                        .setIcon(android.R.drawable.ic_dialog_info)
+//                        .setMessage(Html.fromHtml(String.format("<font color='#bbdefb'>Thanks to use our product. We would like to get your feedback and suggestions.\n   e-mail:<font color='#088A68'>  info@tetris.com </font>", "#000000")))
+//                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+//
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//
+//                            }
+//                        })
+//                        .show();
+                LayoutInflater inflater = SettingsActivity.this.getLayoutInflater();
 
-                            public void onClick(DialogInterface dialog, int which) {
-
-
-                            }
-                        })
+                View layout = inflater.inflate(R.layout.info_dialog, null);
+                final android.support.v7.app.AlertDialog alertContact = new android.support.v7.app.AlertDialog.Builder(SettingsActivity.this)
+                        .setView(layout)
                         .show();
+                AppCompatButton buttonClose = (AppCompatButton)layout.findViewById(R.id.btnClose);
+
+                alertContact.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.parseColor("#00000000")));
+                TextView infoText = (TextView)layout.findViewById(R.id.textViewInfo);
+                //Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
+                //infoText.setTypeface(font);
+                Typeface fontuc = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/uicksandregular.otf");
+                infoText.setTypeface(fontuc);
+                buttonClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertContact.hide();
+                    }
+                });
                 return true;
             }
         });
@@ -98,7 +125,7 @@ public class Settings extends PreferenceActivity  {
         Preference videoDuration = (Preference) findPreference("videoDuration");
         videoDuration.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
-                LayoutInflater inflater = Settings.this.getLayoutInflater();
+                LayoutInflater inflater = SettingsActivity.this.getLayoutInflater();
                 View layout = inflater.inflate(R.layout.videe_length_dialog, null);
 
                 final NumberPicker minutePicker = (NumberPicker) layout.findViewById(R.id.numberPicker);
@@ -111,7 +138,7 @@ public class Settings extends PreferenceActivity  {
                 minutePicker.setWrapSelectorWheel(false);
                 minutePickerSecond.setWrapSelectorWheel(false);
 
-                final AlertDialog alertContact = new AlertDialog.Builder(Settings.this)
+                final AlertDialog alertContact = new AlertDialog.Builder(SettingsActivity.this)
                         .setView(layout)
                         .setTitle("                  Set Video Length ")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {

@@ -144,7 +144,7 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
         }
 
         outputFileFolder = Environment.getExternalStorageDirectory() + "/hidrecorder";
-        outputFileName = (String) DateFormat.format("yyyy-MM-dd_kk:mm:ss", new Date().getTime());
+        outputFileName = (String) DateFormat.format("dd-MM-yyyy  kk:mm:ss", new Date().getTime());
         mediaRecorder.setOutputFile(outputFileFolder+"/"+outputFileName+".mp4");
 
 
@@ -176,7 +176,7 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
         try {
             fos = new FileOutputStream(outputFileFolder+"/images/"+outputFileName+".png");
             // Use the compress method on the BitMap object to write image to the OutputStream
-            Bitmap.createScaledBitmap(bitmap, 72, 128, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
+            Bitmap.createScaledBitmap(bitmap, 128, 72, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
