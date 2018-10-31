@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaScannerConnection;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -13,9 +14,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatButton;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -100,7 +105,7 @@ import java.util.ArrayList;
                             try {
                                 fos = new FileOutputStream(imageP);
                                 // Use the compress method on the BitMap object to write image to the OutputStream
-                                Bitmap.createScaledBitmap(bitmap, 128, 72, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
+                                Bitmap.createScaledBitmap(bitmap, 72, 128, false).compress(Bitmap.CompressFormat.PNG, 10, fos);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             } finally {
@@ -136,17 +141,42 @@ import java.util.ArrayList;
                     }
 
                     @Override
-                    public void onDeleteEvent(int position) {
-                        File file = new File(filePaths.get(position));
-                        boolean result = file.delete();
-                        if(result) {
-                            Toast.makeText(VideosActivity.this, "Video successfully deleted!", Toast.LENGTH_SHORT).show();
-                            videoFiles.remove(position);
-                            adapter.refreshEvents(videoFiles);
-                        }
-                        else {
-                            Toast.makeText(VideosActivity.this, "Error occurred on delete!", Toast.LENGTH_SHORT).show();
-                        }
+                    public void onDeleteEvent(final int position) {
+                        LayoutInflater inflater = VideosActivity.this.getLayoutInflater();
+
+                        View layout = inflater.inflate(R.layout.delete_dialog, null);
+                        final AlertDialog alertContact = new AlertDialog.Builder(VideosActivity.this)
+                                .setView(layout)
+                                .setIcon(R.drawable.tet)
+                                .show();
+                        AppCompatButton buttonYes = (AppCompatButton)layout.findViewById(R.id.btnYes);
+                        AppCompatButton buttonNo = (AppCompatButton)layout.findViewById(R.id.btnNo);
+                        alertContact.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.parseColor("#00000000")));
+                        TextView infoText = (TextView)layout.findViewById(R.id.textViewInfo);
+                        Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
+                        infoText.setTypeface(font);
+                        buttonYes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                File file = new File(filePaths.get(position));
+                                boolean result = file.delete();
+                                if(result) {
+                                    Toast.makeText(VideosActivity.this, "Video successfully deleted!", Toast.LENGTH_SHORT).show();
+                                    videoFiles.remove(position);
+                                    adapter.refreshEvents(videoFiles);
+                                }
+                                else {
+                                    Toast.makeText(VideosActivity.this, "Error occurred on delete!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        buttonNo.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                            }
+                        });
+
                     }
 
                 });
