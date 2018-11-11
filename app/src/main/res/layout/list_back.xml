@@ -10,6 +10,7 @@
         android:weightSum="3"
         android:padding="4dp"
         android:elevation="4dp"
+        android:layout_gravity="bottom|center"
         android:background="@drawable/basic_video_back">
 
         <ImageView

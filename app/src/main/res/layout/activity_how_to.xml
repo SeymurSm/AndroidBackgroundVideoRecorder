@@ -6,24 +6,44 @@
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark">
 
+     <FrameLayout
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="8dp"
+         android:layout_marginLeft="8dp"
+         android:layout_marginRight="8dp">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="32dp"
+              android:gravity="center"
+              android:layout_marginLeft="5dp"
+              android:layout_marginRight="5dp"
+              android:id="@+id/textViewLay1"
+              android:textColor="@color/colorPrimary"
+              android:textSize="32sp"
+              android:text =""
+              android:layout_gravity="center_horizontal"
+              android:layout_marginBottom="4dp"/>
+          <ImageButton
+              android:id="@+id/ibFilter"
+              android:layout_width="32dp"
+              android:layout_height="32dp"
+              android:background="@drawable/ic_filter"
+              android:layout_gravity="center|right"
+              android:layout_marginBottom="4dp"/>
+          <View
+              android:layout_width="fill_parent"
+              android:layout_height="0.3dp"
+              android:background="@color/dodgerblue"
+              android:layout_gravity="bottom|center"></View>
+     </FrameLayout>
 
-     <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="32dp"
-         android:gravity=""
-         android:layout_marginLeft="5dp"
-         android:layout_marginRight="5dp"
-         android:id="@+id/textViewLay1"
-         android:textColor="@color/colorPrimary"
-         android:textSize="32sp"
-         android:text =""
-         android:layout_gravity="center_horizontal" />
 
      <ListView
          android:layout_width="fill_parent"
          android:layout_height="fill_parent"
-         android:layout_marginLeft="5dp"
-         android:layout_marginRight="5dp"
+         android:layout_marginLeft="8dp"
+         android:layout_marginRight="8dp"
          android:divider="@null"
          android:id = "@+id/commandsList">
 

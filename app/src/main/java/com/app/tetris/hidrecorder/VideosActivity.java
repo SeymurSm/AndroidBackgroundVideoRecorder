@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by bledi on 12/19/15.
@@ -42,6 +45,7 @@ import java.util.ArrayList;
     ListView listView;
     ListAdapterHomeMain adapter;
     TinyDB tinyDB;
+    boolean sortOrderAscending = true;
 
     @SuppressLint({"NewApi", "InvalidWakeLockTag"})
     @Override
@@ -123,6 +127,8 @@ import java.util.ArrayList;
                     videoFiles.add(vf);
                 }
 
+
+                ImageButton filterButton = (ImageButton)findViewById(R.id.ibFilter);
                 listView = (ListView) findViewById(R.id.commandsList);
 
                 adapter = new ListAdapterHomeMain(getApplicationContext(), videoFiles, new ListAdapterHomeMain.ICallback() {
@@ -183,6 +189,15 @@ import java.util.ArrayList;
 
                 });
                 listView.setAdapter(adapter);
+
+                filterButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        sortOrderAscending = !sortOrderAscending;
+                        Collections.sort(videoFiles, new CustomComparator(sortOrderAscending));
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
         }
 
@@ -276,5 +291,20 @@ import java.util.ArrayList;
 //                    Bitmap bitmap = Bitmap.createBitmap(thumb, 0, 0,
 //                            thumb.getWidth(), thumb.getHeight(), matrix, true);
     // thumb.getWidth(), thumb.getHeight(), matrix, true);
+
+    public class CustomComparator implements Comparator<VideoFile> {
+        boolean sortOrder;
+        public CustomComparator(boolean sortOrderAscending) {
+            this.sortOrder = sortOrderAscending;
+        }
+
+        @Override
+        public int compare(VideoFile o1, VideoFile o2) {
+            if(sortOrder)
+                return o1.getFileDate().compareTo(o2.getFileDate());
+            else
+                return o2.getFileDate().compareTo(o1.getFileDate());
+        }
+    }
 
 }
