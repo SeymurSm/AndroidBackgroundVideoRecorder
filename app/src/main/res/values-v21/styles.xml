@@ -17,9 +17,4 @@
 
     </style>
 
-    <style name="SMSActivity" parent="Theme.AppCompat.Light.NoActionBar"><!-- Customize your theme here. -->
-        <item name="colorPrimary">#ffeb3b</item>
-        <item name="colorPrimaryDark">#ffeb3b</item>
-
-    </style>
 </resources>

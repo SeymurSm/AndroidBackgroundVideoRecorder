@@ -6,7 +6,7 @@ android {
     aaptOptions.cruncherEnabled = false
     aaptOptions.useNewCruncher = false
     defaultConfig {
-        applicationId "com.app.tetris.hidrecorder"
+        applicationId "com.app.newolablite.hidrecorder"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
