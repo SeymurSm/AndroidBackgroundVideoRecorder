@@ -306,11 +306,5 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
-
-
-    public static boolean isTablet(Context context) {
-        return (context.getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
-    }
+    
 }
