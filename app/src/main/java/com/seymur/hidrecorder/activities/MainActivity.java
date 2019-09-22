@@ -42,7 +42,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @SuppressLint("ServiceCast")
-public class MainActivity extends ActionBarActivity implements TextToSpeech.OnInitListener {
+public class MainActivity extends ActionBarActivity {
 
     int leftLimit, rightLimit;
 
@@ -179,13 +179,7 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
         super.onDestroy();
     }
 
-    @Override
-    public void onInit(int status) {
-
-
-    }
-
-
+  
     @SuppressLint("NewApi")
     private void getBatteryPercentage() {
         BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
