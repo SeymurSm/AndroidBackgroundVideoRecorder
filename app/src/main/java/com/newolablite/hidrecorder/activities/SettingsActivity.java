@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder;
+package com.newolablite.hidrecorder.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,6 +20,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.app.newolablite.hidrecorder.R;
+import com.newolablite.hidrecorder.utils.TinyDB;
 
 /**
  * Created by Seymur on 15.11.2015.

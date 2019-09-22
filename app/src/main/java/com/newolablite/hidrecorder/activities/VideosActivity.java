@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder;
+package com.newolablite.hidrecorder.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -27,6 +27,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.newolablite.hidrecorder.R;
+import com.newolablite.hidrecorder.adapters.ListAdapterHomeMain;
+import com.newolablite.hidrecorder.utils.TinyDB;
+import com.newolablite.hidrecorder.models.VideoFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

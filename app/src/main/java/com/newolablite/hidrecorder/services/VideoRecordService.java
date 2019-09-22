@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder;
+package com.newolablite.hidrecorder.services;
 
 import android.app.Notification;
 import android.app.Service;
@@ -24,6 +24,7 @@ import android.view.SurfaceView;
 import android.view.WindowManager;
 
 import com.app.newolablite.hidrecorder.R;
+import com.newolablite.hidrecorder.utils.TinyDB;
 
 import java.io.File;
 import java.io.FileOutputStream;

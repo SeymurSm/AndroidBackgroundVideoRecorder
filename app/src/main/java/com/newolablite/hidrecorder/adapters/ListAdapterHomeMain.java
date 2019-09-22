@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder;
+package com.newolablite.hidrecorder.adapters;
 
 /**
  * Created by SeymurElk on 10/27/2017.
@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.newolablite.hidrecorder.R;
+import com.newolablite.hidrecorder.models.VideoFile;
 
 import java.util.ArrayList;
 

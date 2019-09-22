@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder;
+package com.newolablite.hidrecorder.models;
 
 import android.graphics.Bitmap;
 

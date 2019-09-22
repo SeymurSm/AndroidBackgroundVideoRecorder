@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder;
+package com.newolablite.hidrecorder.activities;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -32,6 +32,9 @@ import com.app.newolablite.hidrecorder.R;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.newolablite.hidrecorder.utils.TinyDB;
+import com.newolablite.hidrecorder.utils.TypefaceSpan;
+import com.newolablite.hidrecorder.services.VideoRecordService;
 
 import java.net.InetAddress;
 import java.util.Locale;
