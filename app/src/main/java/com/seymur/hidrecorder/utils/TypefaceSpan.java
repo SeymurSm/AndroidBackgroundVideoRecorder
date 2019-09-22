@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder.utils;
+package com.seymur.hidrecorder.utils;
 
 import android.content.Context;
 import android.graphics.Paint;

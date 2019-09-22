@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder;
+package com.seymur.hidrecorder;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

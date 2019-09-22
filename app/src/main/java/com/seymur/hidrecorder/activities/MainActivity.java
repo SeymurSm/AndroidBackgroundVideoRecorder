@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder.activities;
+package com.seymur.hidrecorder.activities;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -28,13 +28,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.app.newolablite.hidrecorder.R;
+import com.app.seymur.hidrecorder.R;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.newolablite.hidrecorder.utils.TinyDB;
-import com.newolablite.hidrecorder.utils.TypefaceSpan;
-import com.newolablite.hidrecorder.services.VideoRecordService;
+import com.seymur.hidrecorder.utils.TinyDB;
+import com.seymur.hidrecorder.utils.TypefaceSpan;
+import com.seymur.hidrecorder.services.VideoRecordService;
 
 import java.net.InetAddress;
 import java.util.Locale;
@@ -621,7 +621,7 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
                 // Otherwise, set the URL to null.
                 Uri.parse("http://host/path"),
                 // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.app.newolablite.hidrecorder/http/host/path")
+                Uri.parse("android-app://com.app.seymur.hidrecorder/http/host/path")
         );
         AppIndex.AppIndexApi.start(client, viewAction);
     }
@@ -640,7 +640,7 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
                 // Otherwise, set the URL to null.
                 Uri.parse("http://host/path"),
                 // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.app.newolablite.hidrecorder/http/host/path")
+                Uri.parse("android-app://com.app.seymur.hidrecorder/http/host/path")
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();

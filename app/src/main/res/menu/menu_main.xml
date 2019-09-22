@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context="com.newolablite.hidrecorder.activities.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.seymur.hidrecorder.activities.MainActivity">
 
 
 
     <!--<item android:id="@+id/game"-->
-        <!--android:title="newolablite Game"-->
+        <!--android:title="seymur Game"-->
         <!--android:orderInCategory="100"-->
         <!--app:showAsAction="never" />-->
 

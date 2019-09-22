@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder.adapters;
+package com.seymur.hidrecorder.adapters;
 
 /**
  * Created by SeymurElk on 10/27/2017.
@@ -21,8 +21,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.newolablite.hidrecorder.R;
-import com.newolablite.hidrecorder.models.VideoFile;
+import com.app.seymur.hidrecorder.R;
+import com.seymur.hidrecorder.models.VideoFile;
 
 import java.util.ArrayList;
 

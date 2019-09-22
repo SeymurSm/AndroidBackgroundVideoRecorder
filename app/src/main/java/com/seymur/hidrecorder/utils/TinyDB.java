@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder.utils;
+package com.seymur.hidrecorder.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;

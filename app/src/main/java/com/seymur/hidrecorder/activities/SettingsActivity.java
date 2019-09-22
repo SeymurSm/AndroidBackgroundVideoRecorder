@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder.activities;
+package com.seymur.hidrecorder.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,8 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-import com.app.newolablite.hidrecorder.R;
-import com.newolablite.hidrecorder.utils.TinyDB;
+import com.app.seymur.hidrecorder.R;
+import com.seymur.hidrecorder.utils.TinyDB;
 
 /**
  * Created by Seymur on 15.11.2015.
@@ -63,7 +63,7 @@ public class SettingsActivity extends PreferenceActivity  {
 //                final AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this)
 //                        .setTitle("About")
 //                        .setIcon(android.R.drawable.ic_dialog_info)
-//                        .setMessage(Html.fromHtml(String.format("<font color='#bbdefb'>Thanks to use our product. We would like to get your feedback and suggestions.\n   e-mail:<font color='#088A68'>  info@newolablite.com </font>", "#000000")))
+//                        .setMessage(Html.fromHtml(String.format("<font color='#bbdefb'>Thanks to use our product. We would like to get your feedback and suggestions.\n   e-mail:<font color='#088A68'>  info@seymur.com </font>", "#000000")))
 //                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
 //
 //                            public void onClick(DialogInterface dialog, int which) {

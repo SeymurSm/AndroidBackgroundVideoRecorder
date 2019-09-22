@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder.services;
+package com.seymur.hidrecorder.services;
 
 import android.app.Service;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.newolablite.hidrecorder.activities;
+package com.seymur.hidrecorder.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -26,10 +26,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.newolablite.hidrecorder.R;
-import com.newolablite.hidrecorder.adapters.ListAdapterHomeMain;
-import com.newolablite.hidrecorder.utils.TinyDB;
-import com.newolablite.hidrecorder.models.VideoFile;
+import com.app.seymur.hidrecorder.R;
+import com.seymur.hidrecorder.adapters.ListAdapterHomeMain;
+import com.seymur.hidrecorder.utils.TinyDB;
+import com.seymur.hidrecorder.models.VideoFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -57,7 +57,7 @@ public final class VideosActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_how_to);
+        setContentView(R.layout.activity_videos);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

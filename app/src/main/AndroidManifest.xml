@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.newolablite.hidrecorder"
+    package="com.app.seymur.hidrecorder"
     android:installLocation="preferExternal">
 
     <!--<uses-permission android:name="android.permission.WAKE_LOCK" />-->
@@ -60,7 +60,7 @@
 
         <!-- MainActivity -->
         <activity
-            android:name="com.newolablite.hidrecorder.activities.MainActivity"
+            android:name="com.seymur.hidrecorder.activities.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -69,12 +69,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.newolablite.hidrecorder.activities.SettingsActivity"
+            android:name="com.seymur.hidrecorder.activities.SettingsActivity"
             android:theme="@style/AppThemeSettings">
             >
             <!-- android:theme="@android:style/Theme.Dialog"> -->
         </activity>
-        <activity android:name="com.newolablite.hidrecorder.activities.VideosActivity" />
+        <activity android:name="com.seymur.hidrecorder.activities.VideosActivity" />
 
         <!-- adding new service -->
         <!-- Registering the notification service -->
@@ -88,11 +88,11 @@
         </receiver>
         -->
         <service
-            android:name="com.newolablite.hidrecorder.services.VideoRecordService"
+            android:name="com.seymur.hidrecorder.services.VideoRecordService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name="com.newolablite.hidrecorder.services.VideoInitialize"
+            android:name="com.seymur.hidrecorder.services.VideoInitialize"
             android:enabled="true"
             android:exported="true" />
         <!--
