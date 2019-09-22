@@ -50,8 +50,7 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
     public ToggleButton videoRecordButton;
     public TextView batteryPercent;
     public TinyDB tinydb;
-  //  public Intent callDetect;
-    public int level,videoRecordState = 0;
+    public int level, videoRecordState = 0;
     private Intent videoRecordService;
 
 
@@ -75,7 +74,6 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
         SpannableString s = new SpannableString(getResources().getString(R.string.app_name));
         s.setSpan(new TypefaceSpan(this, "capture.ttf"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         getSupportActionBar().setTitle(s);
-
 
 
         batteryPercent = (TextView) this.findViewById(R.id.textView2);
@@ -108,7 +106,6 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
         }
 
 
-
         getWindow();
 
 
@@ -120,7 +117,6 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
                     startService(videoRecordService);
                     videoRecordState = 1;
                     tinydb.putInt("VIDEO_RECORDING", videoRecordState);
-                //    videoRecordButton.setBackgroundColor(Color.RED);
                     videoRecordButton.setEnabled(false);
                     videoRecordButton.getBackground().setAlpha(160);
                     Timer buttonTimer = new Timer();
@@ -138,7 +134,6 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
                         }
                     }, 3000);
                 } else {
-                  //  videoRecordButton.setBackgroundColor(Color.parseColor("#26a69a"));
                     stopService(videoRecordService);
                     videoRecordState = 0;
                     tinydb.putInt("VIDEO_RECORDING", videoRecordState);
@@ -148,16 +143,14 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
         });
 
 
-
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        
+
         menuInflater.inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -191,7 +184,6 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
 
 
     }
-
 
 
     @SuppressLint("NewApi")
