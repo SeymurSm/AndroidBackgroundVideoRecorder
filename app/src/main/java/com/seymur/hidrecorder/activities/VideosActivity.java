@@ -53,7 +53,7 @@ public final class VideosActivity extends ActionBarActivity {
     TinyDB tinyDB;
     boolean sortOrderAscending = true;
 
-    @SuppressLint({"NewApi", "InvalidWakeLockTag"})
+    @SuppressLint({"NewApi", "InvalidWakeLockTag", "WrongThread"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,8 +163,6 @@ public final class VideosActivity extends ActionBarActivity {
                         AppCompatButton buttonNo = (AppCompatButton) layout.findViewById(R.id.btnNo);
                         alertContact.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.parseColor("#00000000")));
                         TextView infoText = (TextView) layout.findViewById(R.id.textViewInfo);
-                        //Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
-                        //infoText.setTypeface(font);
                         Typeface fontuc = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/uicksandregular.otf");
                         infoText.setTypeface(fontuc);
                         buttonYes.setOnClickListener(new View.OnClickListener() {
@@ -275,17 +273,7 @@ public final class VideosActivity extends ActionBarActivity {
     }
 
 
-    public void deleteVideo(String path) {
-        File dir = getFilesDir();
-        File file = new File(dir, "my_filename");
-        boolean deleted = file.delete();
-    }
 
-    //                    Bitmap thumb = ThumbnailUtils.createVideoThumbnail(e, MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
-//                    Matrix matrix = new Matrix();
-//                    Bitmap bitmap = Bitmap.createBitmap(thumb, 0, 0,
-//                            thumb.getWidth(), thumb.getHeight(), matrix, true);
-    // thumb.getWidth(), thumb.getHeight(), matrix, true);
 
     public class CustomComparator implements Comparator<VideoFile> {
         boolean sortOrder;

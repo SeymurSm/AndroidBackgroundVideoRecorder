@@ -48,16 +48,7 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
     String outputFileName, outputFileFolder;
     @Override
     public void onCreate() {
-//        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-//            @Override
-//            public void onInit(int status) {
-//                if(status != TextToSpeech.ERROR) {
-//                    //  tts.setLanguage(Locale.US);
-//                    tts.setLanguage(Locale.getDefault());
-//                }
-//            }
-//        });
-//        tts.speak("Recording started wait 20 seconds", TextToSpeech.QUEUE_FLUSH, null);
+
         tinyDB = new TinyDB(getApplicationContext());
         videoQuality = tinyDB.getInt("VIDEO_QUALITY");
         videoDuration = tinyDB.getInt("VIDEO_DURATION");
@@ -163,7 +154,7 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
         mediaRecorder.stop();
         mediaRecorder.reset();
         mediaRecorder.release();
-      //  camera.lock();
+
         camera.release();
         windowManager.removeView(surfaceView);
 
@@ -172,7 +163,7 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
         Bitmap bitmap = Bitmap.createBitmap(thumb, 0, 0,
                 thumb.getWidth(), thumb.getHeight(), matrix, true);
         tinyDB = new TinyDB(getApplicationContext());
-        //tinyDB.putImage(outputFileFolder+"/images",outputFileName+".png", bitmap );
+
 
         FileOutputStream fos = null;
         try {
@@ -193,20 +184,7 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
 
     }
 
-    private void exitPlayer() {
-        VideoRecordService.mediaRecorder.stop();
-        stopSelf();
-    }
 
-
-
-
-    public void speak(String s)
-    {
-        tts.speak(s, TextToSpeech.QUEUE_FLUSH, null);
-
-        while (tts.isSpeaking());
-    }
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int format, int width, int height) {}
 
@@ -217,28 +195,6 @@ public class VideoRecordService extends Service implements SurfaceHolder.Callbac
     public IBinder onBind(Intent intent) { return null; }
 
 
-    private String saveToInternalStorage(Bitmap bitmapImage){
-        ContextWrapper cw = new ContextWrapper(getApplicationContext());
-        // path to /data/data/yourapp/app_data/imageDir
-        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-        // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
 
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(mypath);
-            // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return directory.getAbsolutePath();
-    }
 
 }

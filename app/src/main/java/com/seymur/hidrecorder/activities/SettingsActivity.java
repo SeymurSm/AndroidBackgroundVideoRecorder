@@ -28,8 +28,6 @@ import com.seymur.hidrecorder.utils.TinyDB;
 
 public class SettingsActivity extends PreferenceActivity  {
 
-    Button share,moreapps,about,Adduser;
-
     String currText="";
 
 
@@ -60,18 +58,6 @@ public class SettingsActivity extends PreferenceActivity  {
         About.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
 
-//                final AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this)
-//                        .setTitle("About")
-//                        .setIcon(android.R.drawable.ic_dialog_info)
-//                        .setMessage(Html.fromHtml(String.format("<font color='#bbdefb'>Thanks to use our product. We would like to get your feedback and suggestions.\n   e-mail:<font color='#088A68'>  info@seymur.com </font>", "#000000")))
-//                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
-//
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//
-//                            }
-//                        })
-//                        .show();
                 LayoutInflater inflater = SettingsActivity.this.getLayoutInflater();
 
                 View layout = inflater.inflate(R.layout.info_dialog, null);
@@ -82,8 +68,6 @@ public class SettingsActivity extends PreferenceActivity  {
 
                 alertContact.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.parseColor("#00000000")));
                 TextView infoText = (TextView)layout.findViewById(R.id.textViewInfo);
-                //Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/capture.ttf");
-                //infoText.setTypeface(font);
                 Typeface fontuc = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/uicksandregular.otf");
                 infoText.setTypeface(fontuc);
                 buttonClose.setOnClickListener(new View.OnClickListener() {
