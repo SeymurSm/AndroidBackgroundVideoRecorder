@@ -41,10 +41,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/**
- * Created by bledi on 12/19/15.
- */
-
 @SuppressLint("NewApi")
 public final class VideosActivity extends ActionBarActivity {
 

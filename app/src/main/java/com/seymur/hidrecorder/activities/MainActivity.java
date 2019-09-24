@@ -179,7 +179,7 @@ public class MainActivity extends ActionBarActivity {
         super.onDestroy();
     }
 
-  
+
     @SuppressLint("NewApi")
     private void getBatteryPercentage() {
         BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
